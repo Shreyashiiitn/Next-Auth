@@ -5,7 +5,7 @@ import nodemailer from 'nodemailer'
 export const sendEmail = async({email , emailType , userId} : any) => {
     try {
         
-        const hashedToken = await bcrypt.hash(userId.tostring() , 10) // iska koi need tha nahi , 
+        const hashedToken = await bcrypt.hash(userId.toString() , 10) // iska koi need tha nahi , 
         // better options can be UUID , isme special char nahi rehta hai , 
 
         if(emailType === "VERIFY"){

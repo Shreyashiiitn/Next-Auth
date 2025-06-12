@@ -1,8 +1,14 @@
 import mongoose from "mongoose";  
 
+
+let isConnected = false ; 
 export async function connect(){
+    if (isConnected) {
+        console.log("✅ Already connected to MongoDB");
+        return;
+    }
     try {
-        mongoose.connect(process.env.MONGO_URL!) // "!" iska dene ka ye matlab hai ki 100% yaha string milegi hi milegi 
+        await mongoose.connect(process.env.MONGO_URL!) // "!" iska dene ka ye matlab hai ki 100% yaha string milegi hi milegi 
         const connection = mongoose.connection
 
         connection.on('connected' , ()=>{
