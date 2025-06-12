@@ -12,8 +12,10 @@ export const sendEmail = async({email , emailType , userId} : any) => {
             await User.findByIdAndUpdate(userId , 
                 {
                     verifyToken : hashedToken , 
-                    verifyTokenExpiry : Date.now() + 3600000
+                    verifyTokenExpiry : Date.now() + 3600000 // expiry in 1 hour from now 
                 })
+
+                // if error gives lets set this in mongo $set : 
         }
         else if(emailType === "RESET"){
             await User.findByIdAndUpdate(userId , 

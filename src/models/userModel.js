@@ -36,3 +36,14 @@ const userSchema = new Schema({
 
 const User = mongoose.models.User || mongoose.model("users" , userSchema)
 export default User
+
+
+// error while doing or definig schema 
+// 🔥 Why You Got This Error
+// Your schema (in the past) used usename instead of username.
+// You set it as unique: true.
+// So MongoDB created a unique index on usename.
+// Now all new users have usename: null, and MongoDB thinks you're trying to add duplicate keys for null.
+// 
+// --> Fix for this {Drop the old wrong index from MongoDB}
+// challenge faced 
